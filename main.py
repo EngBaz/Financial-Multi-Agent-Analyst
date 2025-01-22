@@ -23,7 +23,8 @@ scrape_tool = ScrapeWebsiteTool()
 # Define file paths for YAML files
 
 files = {
-    'data_analyst_agent': 'configs/agents.yaml'
+    'agents': 'configs/agents.yaml',
+    'tasks' : 'configs/tasks.yaml',
     }
 
 configs = {}
@@ -31,10 +32,12 @@ for config_type, file_path in files.items():
     with open(file_path, 'r') as file:
         configs[config_type] = yaml.safe_load(file)
 
-print(configs)
-data_analyst_agent_config = configs['data_analyst_agent']
 
-class CryptoInfoTool(BaseTool):
+agents_config = configs['agents']
+tasks_config = configs['tasks']
+
+
+class CryptoDataTool(BaseTool):
     name: str = "get_basic_crypto_info"
     description: str = "Fetch basic crypto information for a given ticker and period."
 
@@ -69,43 +72,35 @@ class CryptoInfoTool(BaseTool):
         except Exception as e:
             return f"An error occurred while fetching crypto data: {str(e)}"
 
-crypto_info_tool = CryptoInfoTool()
+crypto_data_tool = CryptoDataTool()
+search_tool = SerperDevTool()
 
-print(crypto_info_tool)
-
-data_analyst = Agent(
-    config=data_analyst_agent_config["data_analyst_agent"],
-    tools=[crypto_info_tool],
+data_analyst_agent = Agent(
+    config=agents_config['data_analyst_agent'],
+    tools=[crypto_data_tool],
 )
 
-collect_crypto_info = Task(
-    description=''' 
-    1. Retrieve detailed information about the cryptocurrency mentioned in the user query, including its name, ticker, market cap, circulating supply, and historical stock price data (average, maximum, and minimum) over the specified timeframe.
-    2. If no ticker or timeframe is mentioned, identify the cryptocurrency and use a default timeframe of 1 year.
-    3. Provide a clear and concise summary of the financial metrics and performance data gathered.
+news_analyst_agent = Agent(
+    config=agents_config['news_analyst_agent'],
+    tools=[search_tool],
+)
+    
+data_analyst_task = Task(
+    config=tasks_config['data_analyst_task'],
+    agent=data_analyst_agent,
+)
 
-    User crypto: {ticker}.
-    User period: {period}.
-
-    Your response should include:
-    - Cryptocurrency Name and Ticker
-    - Market Cap
-    - Circulating Supply
-    - Stock Price Average, Maximum, and Minimum over the specified period
-    - Any relevant additional insights based on the query.
-    ''',
-    expected_output="A detailed report summarizing the cryptocurrency's financial metrics and historical performance.",
-    agent=data_analyst,
-    dependencies=[],
-    context=[]
+news_analyst_task = Task(
+    config=tasks_config['news_analyst_task'],
+    agent=news_analyst_agent,
 )
 
 crew = Crew(
-    agents=[data_analyst],
-    tasks=[collect_crypto_info],
+    agents=[data_analyst_agent, news_analyst_agent],
+    tasks=[data_analyst_task, news_analyst_task],
     process=Process.hierarchical,
     verbose=True,
-    manager_llm=ChatOpenAI(model="gpt-4-turbo", temperature=0.7),
+    manager_llm=ChatOpenAI(model="gpt-4-turbo", temperature=0),
 )
 
 def stream_data(response):
@@ -115,9 +110,7 @@ def stream_data(response):
         time.sleep(0.06)
      
 st.set_page_config(page_title="Advanced Cryptocurrency Analysis Dashboard", layout="wide")
-
 st.title("Advanced Cryptocurrency Analysis Dashboard")
-
 st.sidebar.header("Cryptocurrency Analysis Input")
 
 crypto_tickers = ["BTC-USD", "ETH-USD", "ADA-USD", "XRP-USD"]

@@ -11,4 +11,12 @@ data_analyst_agent:
   verbose: True
   allow_delegation: False
 
-
+news_analyst_agent:
+  role: >
+    News Analyst
+  goal: >
+    Fetch recent news articles related to the stock and their potential impact on performance.
+  backstory: >
+    A sharp news analyst who can quickly digest information, assess its relevance to stock performance, and provide concise summaries.
+  verbose: True
+  allow_delegation: False

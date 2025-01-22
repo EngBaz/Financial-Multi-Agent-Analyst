@@ -1,0 +1,30 @@
+data_analyst_task:
+  description: >
+    1. Retrieve detailed information about the cryptocurrency mentioned in the user query, including its name, ticker, market cap, circulating supply, and historical stock price data (average, maximum, and minimum) over the specified timeframe.
+    2. If no ticker or timeframe is mentioned, identify the cryptocurrency and use a default timeframe of 1 year.
+    3. Provide a clear and concise summary of the financial metrics and performance data gathered.
+
+    User crypto: {ticker}.
+    User period: {period}.
+
+    Your response should include:
+    - Cryptocurrency Name and Ticker
+    - Market Cap
+    - Circulating Supply
+    - Stock Price Average, Maximum, and Minimum over the specified period
+    - Any relevant additional insights based on the query.
+  expected_output: >
+    A detailed report summarizing the cryptocurrency's financial metrics and historical performance.
+  dependencies: []
+  context: []
+
+news_analyst_task:
+  description: >
+    1. Use the get_stock_news tool to fetch recent news related to the stock.
+    2. Conclude with an overall assessment including the sentiment of how recent news might influence the stock in the relevant timeframe.
+    
+    NOTE: Re-fetching news will get you the same results.
+  expected_output: >
+    A summary of recent news articles related to the stock and their potential impact on performance.
+  dependencies: []
+  context: []
