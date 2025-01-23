@@ -100,8 +100,8 @@ news_analyst_task = Task(
 
 reporting_task = Task(
     config=tasks_config['reporting_agent_task'],
-    agent=reporting_agent,  # Explicitly associate the reporting agent
-    context=[data_analyst_task, news_analyst_task]  # Context from other tasks
+    agent=reporting_agent, 
+    context=[data_analyst_task, news_analyst_task]
 )
 
 crew = Crew(
