@@ -16,9 +16,9 @@ news_analyst_agent:
   role: >
     News Analyst
   goal: >
-    Fetch recent news articles related to the stock and their potential impact on performance.
+    Fetch recent news and information related to the the cryptocurrency.
   backstory: >
-    A sharp news analyst who can quickly digest information, assess its relevance to stock performance, and provide concise summaries.
+    A sharp news analyst who can quickly digest information, assess its relevance to cryptocurrency performance, and provide concise summaries.
   verbose: True
   allow_delegation: False
 

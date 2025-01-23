@@ -13,17 +13,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GROQ_API_KEY = os.environ["GROQ_API_KEY"]
-#COHERE_API_KEY = os.environ["COHERE_API_KEY"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-#GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
 SERPER_API_KEY = os.environ["SERPER_API_KEY"]
 
-search_tool = SerperDevTool()
-#scrape_tool = ScrapeWebsiteTool()
+#groq_llm = "groq/llama-3.3-70b-versatile"
 
 files = {
-    'agents': 'configs/agents.yaml',
-    'tasks' : 'configs/tasks.yaml',
+    'agents':'configs/agents.yaml',
+    'tasks':'configs/tasks.yaml',
     }
 
 configs = {}
@@ -70,7 +67,6 @@ class CryptoDataTool(BaseTool):
             return f"An error occurred while fetching crypto data: {str(e)}"
 
 crypto_data_tool = CryptoDataTool()
-search_tool = SerperDevTool()
 
 data_analyst_agent = Agent(
     config=agents_config['data_analyst_agent'],
@@ -79,7 +75,7 @@ data_analyst_agent = Agent(
 
 news_analyst_agent = Agent(
     config=agents_config['news_analyst_agent'],
-    tools=[search_tool],
+    tools=[SerperDevTool(), ScrapeWebsiteTool()],
 )
 
 reporting_agent = Agent(
@@ -109,7 +105,6 @@ crew = Crew(
     tasks=[data_analyst_task, news_analyst_task, reporting_task],
     process=Process.sequential,
     verbose=True,
-    manager_llm=ChatOpenAI(model="gpt-4-turbo", temperature=0),
 )
 
 def stream_data(response):
