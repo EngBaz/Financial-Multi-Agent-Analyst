@@ -18,6 +18,7 @@ data_analyst_task:
   dependencies: []
   context: []
 
+
 news_analyst_task:
   description: >
     1. Use the get_stock_news tool to fetch recent news related to the stock.
@@ -28,3 +29,18 @@ news_analyst_task:
     A summary of recent news articles related to the stock and their potential impact on performance.
   dependencies: []
   context: []
+
+
+reporting_agent_task:
+  description: >
+    1. Use the get_crypto_data tool to fetch recent market data (e.g., price, volume, market cap) for the cryptocurrency.
+    2. Use the get_crypto_news tool to gather recent news articles related to the cryptocurrency.
+    3. Analyze the correlation between recent news sentiment and market data trends.
+    4. Conclude with an overall assessment including the sentiment and its potential short-term and long-term impact on the cryptocurrency's performance.
+    
+    NOTE: Re-fetching news or data will get you the same results.
+  expected_output: >
+    A detailed report summarizing recent market trends, key news events, their sentiment analysis, and the projected impact on the cryptocurrency's price and adoption.
+  dependencies: []
+  context: []
+  agent: reporting_agent

@@ -16,11 +16,10 @@ GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 #COHERE_API_KEY = os.environ["COHERE_API_KEY"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 #GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
+SERPER_API_KEY = os.environ["SERPER_API_KEY"]
 
 search_tool = SerperDevTool()
-scrape_tool = ScrapeWebsiteTool()
-
-# Define file paths for YAML files
+#scrape_tool = ScrapeWebsiteTool()
 
 files = {
     'agents': 'configs/agents.yaml',
@@ -32,10 +31,8 @@ for config_type, file_path in files.items():
     with open(file_path, 'r') as file:
         configs[config_type] = yaml.safe_load(file)
 
-
 agents_config = configs['agents']
 tasks_config = configs['tasks']
-
 
 class CryptoDataTool(BaseTool):
     name: str = "get_basic_crypto_info"
@@ -84,21 +81,33 @@ news_analyst_agent = Agent(
     config=agents_config['news_analyst_agent'],
     tools=[search_tool],
 )
-    
+
+reporting_agent = Agent(
+    config=agents_config['reporting_agent'],
+)
+
 data_analyst_task = Task(
     config=tasks_config['data_analyst_task'],
     agent=data_analyst_agent,
+    async_execution=True,
 )
 
 news_analyst_task = Task(
     config=tasks_config['news_analyst_task'],
     agent=news_analyst_agent,
+    async_execution=True,
+)
+
+reporting_task = Task(
+    config=tasks_config['reporting_agent_task'],
+    agent=reporting_agent,  # Explicitly associate the reporting agent
+    context=[data_analyst_task, news_analyst_task]  # Context from other tasks
 )
 
 crew = Crew(
-    agents=[data_analyst_agent, news_analyst_agent],
-    tasks=[data_analyst_task, news_analyst_task],
-    process=Process.hierarchical,
+    agents=[data_analyst_agent, news_analyst_agent, reporting_agent],
+    tasks=[data_analyst_task, news_analyst_task, reporting_task],
+    process=Process.sequential,
     verbose=True,
     manager_llm=ChatOpenAI(model="gpt-4-turbo", temperature=0),
 )
