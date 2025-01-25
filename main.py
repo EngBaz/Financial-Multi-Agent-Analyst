@@ -31,6 +31,7 @@ for config_type, file_path in files.items():
 agents_config = configs['agents']
 tasks_config = configs['tasks']
 
+@tool
 class CryptoDataCollectorTool(BaseTool):
     name: str = "get_crypto_data"
     description: str = "Fetch basic crypto data for a given ticker and period."
