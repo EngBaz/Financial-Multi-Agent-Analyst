@@ -33,19 +33,37 @@ crypto_researcher_task:
     A structured summary of relevant news and insights about the specified cryptocurrency.
 
 
+fundamental_analysis_task:
+  description: >
+    1. Analyze the cryptocurrency's project whitepaper to assess its long-term vision and goals.
+    2. Evaluate the team and advisors behind the cryptocurrency project, including their experience and reputation.
+    3. Investigate any partnerships or collaborations that the project has secured to evaluate its credibility and growth potential.
+    4. Provide a comprehensive summary of the project's fundamental strengths and weaknesses based on the above factors.
+  
+    User crypto: {ticker}.
+  expected_output: >
+    A structured analysis of the project's whitepaper, roadmap, team, advisors, and partnerships. 
+    This analysis should focus on the project's long-term potential, credibility, and growth opportunities.
+
+
 reporting_task:
   description: >
     1. Use the output from the Data Collector Agent to include detailed data metrics about the cryptocurrency 
        in a tabular format.
     2. Use the output from the Crypto Researcher Agent to summarize key news, events, or trends about the cryptocurrency.
-    3. Organize the report into the following structure:
-       - Introduction: Brief overview of the cryptocurrency and its relevance.
-       - Cryptocurrency Metrics: Present the collected data in a table format.
-       - Information Summary: Summarize the retrieved research in a clear, concise manner.
-       - Conclusion: Provide an overall assessment and offer investment strategies.
+    3. Use the output from the Fundamental Analysis Agent to include an evaluation of the cryptocurrency’s whitepaper, 
+       team, roadmap, and partnerships, providing insights into the project's long-term potential.
+    4. Organize the report into the following structure:
+       - Introduction: Brief overview of the cryptocurrency, its history, and its relevance in the market.
+       - Cryptocurrency Metrics: Present the collected data in a table format (e.g., price, market cap, circulating supply, etc.).
+       - Information Summary: Summarize the retrieved research, including key developments, trends, and news.
+       - Fundamental Analysis: Provide a detailed analysis of the project's whitepaper, team, roadmap, and partnerships.
+       - Conclusion: Provide an overall assessment, including investment strategies and potential risks.
   expected_output: >
     A well-structured cryptocurrency report with the following sections:
-    - Introduction
-    - Data Metrics (in a tabular format)
-    - Information Summary
-    - Conclusion with investment strategies
+    - Introduction: A brief overview of the cryptocurrency, including its background and relevance.
+    - Cryptocurrency Metrics: Data metrics presented in a table format (e.g., price, market cap, historical trends).
+    - Information Summary: Concise research summary, highlighting trends, news, and key events.
+    - Fundamental Analysis: A detailed analysis covering the whitepaper, team, roadmap, and partnerships.
+    - Conclusion: Overall assessment with investment strategies, risks, and potential recommendations.
+

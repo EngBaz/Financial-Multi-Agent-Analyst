@@ -30,12 +30,21 @@ for config_type, file_path in files.items():
 agents_config = configs['agents']
 tasks_config = configs['tasks']
 
-@tool
 class CryptoDataCollectorTool(BaseTool):
     name: str = "get_crypto_data"
     description: str = "Fetch basic crypto data for a given ticker and period."
-
+    
     def _run(self, ticker: str, period: str) -> str:
+        """
+        Fetches historical and basic cryptocurrency data for a given ticker and period.
+        
+        Args:
+            ticker (str): The cryptocurrency ticker symbol (e.g., "BTC-USD").
+            period (str): The period for historical data (e.g., "1y", "2y").
+        
+        Returns:
+            str: A formatted string containing the cryptocurrency's basic information and historical price data.
+        """
         try:
             btc = yf.Ticker(ticker)
             historical_data = btc.history(period=period)
@@ -78,10 +87,15 @@ crypto_researcher_agent = Agent(
     tools=[SerperDevTool(), ScrapeWebsiteTool()],    
 )
 
+fundamental_analysis_agent = Agent(
+    config=agents_config['fundamental_analysis_agent'],
+    tools=[SerperDevTool(), ScrapeWebsiteTool()],
+)
+
 reporting_agent = Agent(
     config=agents_config['reporting_agent'],
 )
-
+    
 data_collector_task = Task(
     config=tasks_config['data_collector_task'],    
     agent=data_collector_agent,
@@ -94,31 +108,33 @@ crypto_researcher_task = Task(
     async_execution=True,                            
 )
 
+fundamental_analysis_task = Task(
+    config=tasks_config['fundamental_analysis_task'],
+    agent=fundamental_analysis_agent,
+    async_execution=True,
+)
+
 reporting_task = Task(
     config=tasks_config['reporting_task'],  
     agent=reporting_agent,
-    context=[data_collector_task, crypto_researcher_task],  
+    context=[data_collector_task, crypto_researcher_task, fundamental_analysis_task],  
 )
 
 crew = Crew(
     agents=[data_collector_agent, 
             crypto_researcher_agent, 
-            reporting_agent
+            fundamental_analysis_agent, 
+            reporting_agent,
             ],
     tasks=[data_collector_task, 
-           crypto_researcher_task, 
-           reporting_task
+           crypto_researcher_task,
+           fundamental_analysis_task, 
+           reporting_task,
            ],
     process=Process.sequential,
     verbose=True,
 )
 
-def stream_data(response):
-    
-    for word in response.split(" "):
-        yield word + " "
-        time.sleep(0.06)
-     
 st.set_page_config(page_title="Advanced Cryptocurrency Analysis Dashboard", layout="wide")
 st.title("Advanced Cryptocurrency Analysis Dashboard")
 st.sidebar.header("Cryptocurrency Analysis Input")
