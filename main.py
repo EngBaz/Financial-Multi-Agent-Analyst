@@ -1,12 +1,11 @@
 import os
 import streamlit as st
 import yfinance as yf
-import pandas as pd
 import time
 import yaml
 
 from crewai import Agent, Task, Crew, Process
-from crewai_tools import ScrapeWebsiteTool, SerperDevTool, BaseTool
+from crewai_tools import ScrapeWebsiteTool, SerperDevTool, BaseTool, tool
 from langchain_openai import ChatOpenAI
 
 from dotenv import load_dotenv
