@@ -31,9 +31,9 @@ for config_type, file_path in files.items():
 agents_config = configs['agents']
 tasks_config = configs['tasks']
 
-class CryptoDataTool(BaseTool):
-    name: str = "get_basic_crypto_info"
-    description: str = "Fetch basic crypto information for a given ticker and period."
+class CryptoDataCollectorTool(BaseTool):
+    name: str = "get_crypto_data"
+    description: str = "Fetch basic crypto data for a given ticker and period."
 
     def _run(self, ticker: str, period: str) -> str:
         try:
@@ -66,43 +66,49 @@ class CryptoDataTool(BaseTool):
         except Exception as e:
             return f"An error occurred while fetching crypto data: {str(e)}"
 
-crypto_data_tool = CryptoDataTool()
+crypto_data_colloctor_tool = CryptoDataCollectorTool()
 
-data_analyst_agent = Agent(
-    config=agents_config['data_analyst_agent'],
-    tools=[crypto_data_tool],
+data_collector_agent = Agent(
+    config=agents_config['data_collector_agent'],
+    tools=[crypto_data_colloctor_tool],
 )
 
-news_analyst_agent = Agent(
-    config=agents_config['news_analyst_agent'],
-    tools=[SerperDevTool(), ScrapeWebsiteTool()],
+crypto_researcher_agent = Agent(
+    config=agents_config['crypto_researcher_agent'],  
+    tools=[SerperDevTool(), ScrapeWebsiteTool()],    
 )
 
 reporting_agent = Agent(
     config=agents_config['reporting_agent'],
 )
 
-data_analyst_task = Task(
-    config=tasks_config['data_analyst_task'],
-    agent=data_analyst_agent,
-    async_execution=True,
+data_collector_task = Task(
+    config=tasks_config['data_collector_task'],    
+    agent=data_collector_agent,
+    async_execution=True,                        
 )
 
-news_analyst_task = Task(
-    config=tasks_config['news_analyst_task'],
-    agent=news_analyst_agent,
-    async_execution=True,
+crypto_researcher_task = Task(
+    config=tasks_config['crypto_researcher_task'],   
+    agent=crypto_researcher_agent,
+    async_execution=True,                            
 )
 
 reporting_task = Task(
-    config=tasks_config['reporting_agent_task'],
-    agent=reporting_agent, 
-    context=[data_analyst_task, news_analyst_task]
+    config=tasks_config['reporting_task'],  
+    agent=reporting_agent,
+    context=[data_collector_task, crypto_researcher_task],  
 )
 
 crew = Crew(
-    agents=[data_analyst_agent, news_analyst_agent, reporting_agent],
-    tasks=[data_analyst_task, news_analyst_task, reporting_task],
+    agents=[data_collector_agent, 
+            crypto_researcher_agent, 
+            reporting_agent
+            ],
+    tasks=[data_collector_task, 
+           crypto_researcher_task, 
+           reporting_task
+           ],
     process=Process.sequential,
     verbose=True,
 )

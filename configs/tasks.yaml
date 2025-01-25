@@ -1,8 +1,10 @@
-data_analyst_task:
+data_collector_task:
   description: >
-    1. Retrieve detailed information about the cryptocurrency mentioned in the user query, including its name, ticker, market cap, circulating supply, and historical stock price data (average, maximum, and minimum) over the specified timeframe.
-    2. If no ticker or timeframe is mentioned, identify the cryptocurrency and use a default timeframe of 1 year.
-    3. Provide a clear and concise summary of the financial metrics and performance data gathered.
+    1. Retrieve cryptocurrency data based on the user crytocurrency, including its name, ticker, market cap, circulating supply, 
+       and historical stock price metrics (average, maximum, and minimum) over the specified timeframe.
+    2. If no ticker or timeframe is mentioned, request clarification from the user or use default values 
+       (e.g., BTC for ticker and 1 year for timeframe).
+    3. Provide a summary of the collected data in a clear, user-friendly format.
 
     User crypto: {ticker}.
     User period: {period}.
@@ -12,29 +14,38 @@ data_analyst_task:
     - Market Cap
     - Circulating Supply
     - Stock Price Average, Maximum, and Minimum over the specified period
-    - Any relevant additional insights based on the query.
   expected_output: >
-    A detailed report summarizing the cryptocurrency's financial metrics and historical performance.
+    A structured summary of the cryptocurrency's financial metrics and historical price performance.
 
 
-news_analyst_task:
+crypto_researcher_task:
   description: >
-    Retrieve information related to the cryptocurrency that the user entered.
+    1. Search for recent and relevant information about the cryptocurrency specified by the user.
+    2. Use reliable sources such as news websites, blogs, or cryptocurrency forums to provide up-to-date insights.
+    3. If the user doesn't provide a cryptocurrency ticker, request clarification.
 
     User crypto: {ticker}.
 
+    Your response should include:
+    - A concise summary of recent news related to the cryptocurrency.
+    - Key developments, trends, or events that may impact the cryptocurrency's market or reputation.
   expected_output: >
-    A summary of recent news articles related to the stock and their potential impact on performance.
+    A structured summary of relevant news and insights about the specified cryptocurrency.
 
 
-reporting_agent_task:
+reporting_task:
   description: >
-    1. Use the get_crypto_data tool to fetch recent market data (e.g., price, volume, market cap) for the cryptocurrency.
-    2. Use the get_crypto_news tool to gather recent news articles related to the cryptocurrency.
-    3. Analyze the correlation between recent news sentiment and market data trends.
-    4. Conclude with an overall assessment including the sentiment and its potential short-term and long-term impact on the cryptocurrency's performance.
-    
-    NOTE: Re-fetching news or data will get you the same results.
+    1. Use the output from the Data Collector Agent to include detailed data metrics about the cryptocurrency 
+       in a tabular format.
+    2. Use the output from the Crypto Researcher Agent to summarize key news, events, or trends about the cryptocurrency.
+    3. Organize the report into the following structure:
+       - Introduction: Brief overview of the cryptocurrency and its relevance.
+       - Cryptocurrency Metrics: Present the collected data in a table format.
+       - Information Summary: Summarize the retrieved research in a clear, concise manner.
+       - Conclusion: Provide an overall assessment and offer investment strategies.
   expected_output: >
-    A detailed report summarizing recent market trends, key news events, their sentiment analysis, and the projected impact on the cryptocurrency's price and adoption.
-  agent: reporting_agent
+    A well-structured cryptocurrency report with the following sections:
+    - Introduction
+    - Data Metrics (in a tabular format)
+    - Information Summary
+    - Conclusion with investment strategies
