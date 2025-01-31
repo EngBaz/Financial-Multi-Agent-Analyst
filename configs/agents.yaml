@@ -39,19 +39,37 @@ fundamental_analysis_agent:
   allow_delegation: False
 
 
+technical_analysis_agent:
+  role: >
+    Technical Analysis Specialist
+  goal: >
+    Analyze cryptocurrency price trends and market momentum using technical indicators such as the 50-day SMA and 200-day SMA, 
+    to help assess potential future price movements and trading opportunities.
+  backstory: >
+    A cryptocurrency specialist designed to evaluate price trends and patterns using technical analysis. 
+    It calculates key indicators like the 50-day SMA and 200-day SMA to provide insights into market trends, 
+    helping users make data-driven trading and investment decisions.
+  verbose: True
+  allow_delegation: False
+
+
 reporting_agent:
   role: >
     Cryptocurrency Report Generator
   goal: >
     Compile a detailed and well-organized report about a specific cryptocurrency by combining data metrics 
     collected by the Data Collector Agent, information retrieved by the Crypto Researcher Agent, 
-    and the fundamental analysis from the Fundamental Analysis Agent.
+    the fundamental analysis from the Fundamental Analysis Agent, and the technical analysis from the Technical Analysis Agent. 
+    Additionally, provide a summary of key technical indicators and an assessment of market sentiment based on these indicators.
   backstory: >
-    A highly capable cryptocurrency report generator, designed to synthesize data, research, and fundamental analysis 
-    into a clear, actionable report for investors and analysts. This agent provides a comprehensive overview that 
-    includes market data, project insights, and key factors influencing the cryptocurrency’s future potential.
+    A highly capable cryptocurrency report generator, designed to synthesize data, research, fundamental analysis, and 
+    technical indicators into a clear, actionable report for investors and analysts. This agent provides a comprehensive overview 
+    that includes market data, project insights, technical trends, and key factors influencing the cryptocurrency's future potential. 
+    It also evaluates market sentiment by analyzing price trends and momentum indicators, helping users understand potential bullish 
+    or bearish signals.
   verbose: True
   allow_delegation: False
+
 
 
 

@@ -34,21 +34,14 @@ class CryptoDataCollectorTool(BaseTool):
     description: str = "Fetch basic crypto data for a given ticker and period."
     
     def _run(self, ticker: str, period: str) -> str:
-        """
-        Fetches historical and basic cryptocurrency data for a given ticker and period.
-        
-        Args:
-            ticker (str): The cryptocurrency ticker symbol (e.g., "BTC-USD").
-            period (str): The period for historical data (e.g., "1y", "2y").
-        
-        Returns:
-            str: A formatted string containing the cryptocurrency's basic information and historical price data.
-        """
         try:
-            btc = yf.Ticker(ticker)
-            historical_data = btc.history(period=period)
-            info = btc.info
+            crypto = yf.Ticker(ticker)
+            historical_data = crypto.history(period=period)
+            info = crypto.info
 
+            if historical_data.empty:
+                return "No historical data available for the given ticker and period."
+            
             name = info.get('name', 'N/A')
             symbol = info.get('symbol', 'N/A')
             market_cap = info.get('marketCap', 'N/A')
@@ -73,12 +66,48 @@ class CryptoDataCollectorTool(BaseTool):
 
         except Exception as e:
             return f"An error occurred while fetching crypto data: {str(e)}"
-
-crypto_data_colloctor_tool = CryptoDataCollectorTool()
+        
+class CryptoTechnicalAnalysisTool(BaseTool):
+    name: str = "get_crypto_technical_analysis"
+    description: str = "Perform technical analysis on a given cryptocurrency ticker and period."
+    
+    def _run(self, ticker: str, period: str) -> str:
+        try:
+            crypto = yf.Ticker(ticker)
+            history = crypto.history(period=period)
+            
+            if history.empty:
+                return "No historical data available for the given ticker and period."
+            
+            # Calculate indicators
+            history['SMA_50'] = history['Close'].rolling(window=50).mean()
+            history['SMA_200'] = history['Close'].rolling(window=200).mean()
+            #history['RSI'] = calculate_rsi(history['Close'])
+            #history['MACD'], history['Signal'] = calculate_macd(history['Close'])
+            
+            latest = history.iloc[-1]
+            
+            response = f"""
+            **Technical Analysis for {ticker} ({period}):**
+            - Current Price: ${latest['Close']:.2f}
+            - 50-day SMA: ${latest['SMA_50']:.2f}
+            - 200-day SMA: ${latest['SMA_200']:.2f}
+            """
+            #- RSI (14-day): {latest['RSI']:.2f}
+            #- MACD: {latest['MACD']:.2f}
+            #- MACD Signal: {latest['Signal']:.2f}
+            #- Trend Analysis: {analyze_trend(latest)}
+            #- MACD Signal: {analyze_macd(latest)}
+            #- RSI Signal: {analyze_rsi(latest)}
+            
+            return response
+        
+        except Exception as e:
+            return f"An error occurred while performing technical analysis: {str(e)}"
 
 data_collector_agent = Agent(
     config=agents_config['data_collector_agent'],
-    tools=[crypto_data_colloctor_tool],
+    tools=[CryptoDataCollectorTool()],
 )
 
 crypto_researcher_agent = Agent(
@@ -89,6 +118,11 @@ crypto_researcher_agent = Agent(
 fundamental_analysis_agent = Agent(
     config=agents_config['fundamental_analysis_agent'],
     tools=[SerperDevTool(), ScrapeWebsiteTool()],
+)
+
+technical_analysis_agent = Agent(
+    config=agents_config['technical_analysis_agent'],
+    tools=[CryptoTechnicalAnalysisTool()],
 )
 
 reporting_agent = Agent(
@@ -113,21 +147,29 @@ fundamental_analysis_task = Task(
     async_execution=True,
 )
 
+technical_analysis_task = Task(
+    config=tasks_config['technical_analysis_task'],
+    agent=technical_analysis_agent,
+    async_execution=True,
+)
+
 reporting_task = Task(
     config=tasks_config['reporting_task'],  
     agent=reporting_agent,
-    context=[data_collector_task, crypto_researcher_task, fundamental_analysis_task],  
+    context=[data_collector_task, crypto_researcher_task, fundamental_analysis_task, technical_analysis_task],  
 )
 
 crew = Crew(
     agents=[data_collector_agent, 
             crypto_researcher_agent, 
-            fundamental_analysis_agent, 
+            fundamental_analysis_agent,
+            technical_analysis_agent, 
             reporting_agent,
             ],
     tasks=[data_collector_task, 
            crypto_researcher_task,
-           fundamental_analysis_task, 
+           fundamental_analysis_task,
+           technical_analysis_task, 
            reporting_task,
            ],
     process=Process.sequential,

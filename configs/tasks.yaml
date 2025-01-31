@@ -46,6 +46,21 @@ fundamental_analysis_task:
     This analysis should focus on the project's long-term potential, credibility, and growth opportunities.
 
 
+technical_analysis_task:
+  description: >
+    1. Retrieve historical price data for the given cryptocurrency over the specified period.
+    2. Calculate key technical indicators, including the 50-day SMA and 200-day SMA, to analyze market trends.
+    3. Assess potential bullish or bearish trends based on SMA crossovers and price movements.
+    4. Provide a comprehensive summary of the cryptocurrency's technical outlook based on the above factors.
+  
+    User crypto: {ticker} 
+    Period: {period}
+  expected_output: >
+    A structured technical analysis of the cryptocurrency, including calculated SMA values, trend analysis, 
+    and potential trading signals. The analysis should help users understand market momentum and price trends 
+    for informed decision-making.
+
+
 reporting_task:
   description: >
     1. Use the output from the Data Collector Agent to include detailed data metrics about the cryptocurrency 
@@ -53,11 +68,16 @@ reporting_task:
     2. Use the output from the Crypto Researcher Agent to summarize key news, events, or trends about the cryptocurrency.
     3. Use the output from the Fundamental Analysis Agent to include an evaluation of the cryptocurrency’s whitepaper, 
        team, roadmap, and partnerships, providing insights into the project's long-term potential.
-    4. Organize the report into the following structure:
+    4. Use the output from the Technical Analysis Agent to assess key technical indicators such as the 50-day SMA and 
+       200-day SMA, analyzing price trends and market momentum.
+    5. Evaluate market sentiment based on technical indicators, providing insights into potential bullish or bearish trends.
+    6. Organize the report into the following structure:
        - Introduction: Brief overview of the cryptocurrency, its history, and its relevance in the market.
        - Cryptocurrency Metrics: Present the collected data in a table format (e.g., price, market cap, circulating supply, etc.).
        - Information Summary: Summarize the retrieved research, including key developments, trends, and news.
        - Fundamental Analysis: Provide a detailed analysis of the project's whitepaper, team, roadmap, and partnerships.
+       - Technical Analysis: Present key indicators such as the 50-day SMA, 200-day SMA, MACD, RSI, and their implications.
+       - Sentiment Analysis: Assess market sentiment based on technical indicators and price trends, highlighting bullish or bearish signals.
        - Conclusion: Provide an overall assessment, including investment strategies and potential risks.
   expected_output: >
     A well-structured cryptocurrency report with the following sections:
@@ -65,5 +85,8 @@ reporting_task:
     - Cryptocurrency Metrics: Data metrics presented in a table format (e.g., price, market cap, historical trends).
     - Information Summary: Concise research summary, highlighting trends, news, and key events.
     - Fundamental Analysis: A detailed analysis covering the whitepaper, team, roadmap, and partnerships.
+    - Technical Analysis: Summary of key technical indicators (50-day SMA, 200-day SMA, MACD, RSI) and their market implications.
+    - Sentiment Analysis: Market sentiment evaluation based on technical trends, highlighting bullish or bearish signals.
     - Conclusion: Overall assessment with investment strategies, risks, and potential recommendations.
+
 
