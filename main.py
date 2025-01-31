@@ -1,12 +1,11 @@
 import os
 import streamlit as st
 import yfinance as yf
-import time
 import yaml
 
 from crewai import Agent, Task, Crew, Process
-from crewai_tools import ScrapeWebsiteTool, SerperDevTool, BaseTool, tool
-from langchain_openai import ChatOpenAI
+from crewai_tools import ScrapeWebsiteTool, SerperDevTool
+from crewai.tools import BaseTool 
 
 from dotenv import load_dotenv
 load_dotenv()

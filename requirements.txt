@@ -1,6 +1,6 @@
 crewai
-crewai-tools
 langchain_community
 streamlit
 langchain-groq
 yfinance
+crewai_tools
