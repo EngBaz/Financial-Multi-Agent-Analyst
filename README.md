@@ -1,4 +1,4 @@
-# Advanced Cryptocurrency Analysis Dashboard
+# :coin: Advanced Cryptocurrency Analysis Dashboard
 
 DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
