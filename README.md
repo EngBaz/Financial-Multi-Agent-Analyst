@@ -25,7 +25,7 @@ To setup this project on your local machine, follow the below steps:
     ```
 5. run the streamlit app: <code> streamlit run main.py </code>
 
-## Implementation
+## :robot: Implementation
 
 The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
 
