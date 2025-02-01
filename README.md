@@ -9,7 +9,7 @@ The AI Financial Analyst Bot is an intelligent application designed to provide c
 It leverages OpenAI's GPT models for analysis, yfinance for historical cryptocurrency data, and serper for news retrieval.
 
 ### Why is it Useful?
-Investing in the stock market often requires hours of research, financial literacy, and keeping up with news. 
+Investing in the cryptocurrency market often requires hours of research, financial literacy, and keeping up with news. 
 This bot automates these tasks by providing a one-stop solution for all your research needs. 
 It not only provides raw data but also offers AI-powered insights to make your investment decisions more informed.
 
