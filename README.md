@@ -5,7 +5,14 @@ Note: You need to know the cryptocurrency's ticker name for a better analysis.
 ## Overview
 
 ### What is AI Financial Analyst Bot?
-The AI Financial Analyst Bot is an intelligent application designed to provide comprehensive financial analysis and insights for any given company. It leverages OpenAI's GPT-3.5-turbo model for analysis, yfinance for historical stock data, yahooquery for financial statements, and serper.dev for news retrieval.
+The AI Financial Analyst Bot is an intelligent application designed to provide comprehensive financial analysis and insights for any given cryptocurrency. 
+It leverages OpenAI's GPT models for analysis, yfinance for historical cryptocurrency data, and serper for news retrieval.
+
+Why is it Useful?
+Investing in the stock market often requires hours of research, financial literacy, and keeping up with news. 
+This bot automates these tasks by providing a one-stop solution for all your research needs. 
+It not only provides raw data but also offers AI-powered insights to make your investment decisions more informed.
+
 ## Setup
 
 To setup this project on your local machine, follow the below steps:
