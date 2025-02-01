@@ -1,4 +1,4 @@
-# AI Financial Analyst Bot
+# AI Multi-Agent Financial Analyst
 
 Note: You need to know the cryptocurrency's ticker name for a better analysis.
 
