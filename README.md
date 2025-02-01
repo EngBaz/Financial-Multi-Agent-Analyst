@@ -19,3 +19,19 @@ The project integrates several cutting-edge technologies to enable accurate and 
 5- Python: Serves as a central programming language that enables the collection, processing and visualization of data
 
 6- Docker (Planned): Facilitates deployment for seamless execution across environments
+
+# Implementation
+
+The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
+
+1- Data Collector Agent: Gathers historical price data and key financial metrics
+
+2- Crypto Researcher Agent: Scrapes the web for whitepapers, team details, and project credibility
+
+3- Fundamental Analysis Agent: Assesses a cryptocurrency’s vision, team, partnerships, and long-term potential
+
+4- Technical Analysis Agent: Calculates key technical indicators (SMA 50, SMA 200) and identifies market trends
+
+5- Financial Analyst Agent: Integrates fundamental and technical data to suggest investment strategies
+
+6- Reporting Agent: Generates a comprehensive summary based on all analyses
