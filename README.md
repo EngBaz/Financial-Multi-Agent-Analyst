@@ -36,10 +36,10 @@ To setup this project on your local machine, follow the below steps:
 
 ### Features
 
-* Company News Retrieval: Uses serper.dev API to fetch the latest news related to a company
-* Historical Stock Data: Utilizes yfinance library to fetch historical stock data
-*Financial Statements: Uses yahooquery to fetch the balance sheet, cash flow, and income statements
-*AI-Powered Analysis: Uses OpenAI's GPT-3 model to generate in-depth financial analysis and recommendations
+* Company News Retrieval: Uses serper.dev API to fetch the latest news related to a company <br>
+* Historical Stock Data: Utilizes yfinance library to fetch historical stock data <br>
+*Financial Statements: Uses yahooquery to fetch the balance sheet, cash flow, and income statements <br>
+*AI-Powered Analysis: Uses OpenAI's GPT-3 model to generate in-depth financial analysis and recommendations <br>
 
 ## III. Architecture
 
