@@ -36,10 +36,10 @@ To setup this project on your local machine, follow the below steps:
 
 ### Features
 
-* Cryptocurrency News Retrieval: Uses serper API to fetch the latest news related to the cryptocurrency 
-* Historical Cryptocurrency Data: Utilizes yfinance library to fetch historical stock data 
-* Financial Statements: Uses yahooquery to fetch the balance sheet, cash flow, and income statements 
-* AI-Powered Analysis: Uses OpenAI's GPT-3 model to generate in-depth financial analysis and recommendations
+* <code>Cryptocurrency News Retrieval:</code> Uses serper API to fetch the latest news related to the cryptocurrency 
+* <code>Historical Cryptocurrency Data:</code> Utilizes yfinance library to fetch historical stock data 
+* <code>Financial Statements:</code> Uses yahooquery to fetch the balance sheet, cash flow, and income statements 
+* <code>AI-Powered Analysis:</code> Uses OpenAI's GPT-3 model to generate in-depth financial analysis and recommendations
 
 ## III. Multi-Agent Architecture
 
