@@ -50,7 +50,7 @@ The application is structured using AI agents, each specializing in a particular
 
 6- <code>Reporting Agent:</code> Generates a comprehensive summary based on all analyses
 
-## :hammer_and_wrench: Technologies used
+## IV. Technologies used
 
 * Python
 * Streamlit
