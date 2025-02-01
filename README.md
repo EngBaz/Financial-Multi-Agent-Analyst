@@ -2,7 +2,7 @@
 
 Note: You need to know the cryptocurrency's ticker name for a better analysis.
 
-## Overview
+## I. Overview
 
 ### What is AI Financial Analyst Bot?
 The AI Financial Analyst Bot is an intelligent application designed to provide comprehensive financial analysis and insights for any given cryptocurrency. 
@@ -13,7 +13,7 @@ Investing in the cryptocurrency market often requires hours of research, financi
 This bot automates these tasks by providing a one-stop solution for all your research needs. 
 It not only provides raw data but also offers AI-powered insights to make your investment decisions more informed.
 
-## Setup
+## II. Setup
 
 To setup this project on your local machine, follow the below steps:
 1. Clone this repository: <code>git clone github.com/EngBaz/Financial-Multi-Agent-Analyst</code>
@@ -34,7 +34,7 @@ To setup this project on your local machine, follow the below steps:
     ```
 5. run the streamlit app: <code> streamlit run main.py </code>
 
-## :robot: Implementation
+## III. Features
 
 The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
 
