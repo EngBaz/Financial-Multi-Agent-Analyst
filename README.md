@@ -4,7 +4,7 @@ DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
 ![Bitcoin](images/bitcoin.png)
 
-## Setup
+## :hammer_and_wrench: Setup
 
 To setup this project on your local machine, follow the below steps:
 1. Clone this repository: <code>git clone github.com/EngBaz/Financial-Multi-Agent-Analyst</code>
