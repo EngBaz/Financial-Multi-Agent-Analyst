@@ -45,8 +45,7 @@ To setup this project on your local machine, follow the below steps:
 
 The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
 
-1- <code>Data Collector Agent:</code> Gathers historical price data and key financial metrics
-
+1- <code>Data Collector Agent:</code> Gathers historical price data and key financial metrics </br>
 2- <code>Crypto Researcher Agent:</code> Scrapes the web for general information on a specific cryptocurrency
 
 3- <code>Fundamental Analysis Agent:</code> Assesses a cryptocurrency’s vision, team, partnerships, and long-term potential
