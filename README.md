@@ -4,7 +4,7 @@ DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
 ![Bitcoin](images/bitcoin.png)
 
-## :hammer_and_wrench: Setup
+## :gear: Configuration
 
 To setup this project on your local machine, follow the below steps:
 1. Clone this repository: <code>git clone github.com/EngBaz/Financial-Multi-Agent-Analyst</code>
@@ -40,3 +40,9 @@ The application is structured using AI agents, each specializing in a particular
 5- <code>Financial Analyst Agent:</code> Integrates fundamental and technical data to suggest investment strategies
 
 6- <code>Reporting Agent:</code> Generates a comprehensive summary based on all analyses
+
+## :hammer_and_wrench: Technologies used
+
+* Python
+* Streamlit
+* crewAI
