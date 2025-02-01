@@ -40,7 +40,7 @@ To setup this project on your local machine, follow the below steps:
 * <code>Historical Cryptocurrency Data:</code> Utilizes yfinance library to fetch historical cryptocurrency data 
 * <code>Fundamental Data:</code> Uses serper API to fetch fundamental data about the cryptocurrency like the team behind the coin, the cryptocurrency's vision
 * <code>Technical Data:</code> Calculates metrics such as SM50, RSI, and MACD to enhance investment decisions 
-* <code>AI-Powered Analysis:</code> Uses OpenAI's GPT models to generate in-depth financial analysis and recommendations
+* <code>AI-Powered Analysis:</code> Uses OpenAI's GPT models to generate a detailed report with in-depth financial analysis and recommendations
 
 ## III. Multi-Agent Architecture
 
