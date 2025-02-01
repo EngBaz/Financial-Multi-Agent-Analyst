@@ -4,7 +4,7 @@ DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
 ![Bitcoin](images/bitcoin.png)
 
-# TECHNOLOGIES USED
+## Technologies used
 
 The project integrates several cutting-edge technologies to enable accurate and efficient analysis of cryptocurrencies:
 
@@ -20,7 +20,7 @@ The project integrates several cutting-edge technologies to enable accurate and 
 
 6- Docker (Planned): Facilitates deployment for seamless execution across environments
 
-# Implementation
+## Implementation
 
 The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
 
