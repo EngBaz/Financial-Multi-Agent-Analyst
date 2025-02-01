@@ -7,7 +7,7 @@ DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 ## Setup
 
 To setup this project on your local machine, follow the below steps:
-1. Clone this repository: <code>git clone github.com/EngBaz/BrAIcht-Bot</code>
+1. Clone this repository: <code>git clone github.com/EngBaz/Financial-Multi-Agent-Analyst</code>
 
 2. Create a virtual enviromnent
    ```console
@@ -19,9 +19,9 @@ To setup this project on your local machine, follow the below steps:
 4. Obtain an API key from OpenAI, Cohere AI and Groq. Store the APIs in a <code>.env</code> file as follows:
     ```console
     
-    $ GOOGLE_API_KEY="your api key"
+    $ OPENAI_API_KEY="your api key"
     $ GROQ_API_KEY="your api key"
-    $ COHERE_API_KEY="your api key"
+    $ SERPER_API_KEY="your api key"
     ```
 5. run the streamlit app: <code> streamlit run main.py </code>
 
