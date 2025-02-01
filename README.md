@@ -1,4 +1,4 @@
-# :coin: Advanced Cryptocurrency Analysis Dashboard
+# :coin: AI Financial Analyst Bot
 
 DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
