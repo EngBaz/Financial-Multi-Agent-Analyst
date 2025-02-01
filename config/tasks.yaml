@@ -61,12 +61,27 @@ technical_analysis_task:
     for informed decision-making.
 
 
+financial_analysis_task:
+  description: >
+    1. Integrate insights from both fundamental and technical analysis to assess the cryptocurrency's overall financial health.
+    2. Evaluate key financial metrics such as market capitalization, trading volume, liquidity, volatility, and risk-reward ratios.
+    3. Identify potential investment strategies based on historical performance, market conditions, and investor risk tolerance.
+    4. Provide a structured recommendation on whether to invest, hold, or avoid the cryptocurrency, along with risk mitigation strategies.
+
+    User crypto: {ticker}
+    Period: {period}
+  expected_output: >
+    A structured financial analysis that combines fundamental and technical insights to evaluate the cryptocurrency's 
+    investment potential. This includes risk-reward assessment, liquidity analysis, volatility evaluation, and 
+    suggested investment strategies tailored to market conditions.
+
+
 reporting_task:
   description: >
     1. Use the output from the Data Collector Agent to include detailed data metrics about the cryptocurrency 
        in a tabular format.
     2. Use the output from the Crypto Researcher Agent to summarize key news, events, or trends about the cryptocurrency.
-    3. Use the output from the Fundamental Analysis Agent to include an evaluation of the cryptocurrency’s whitepaper, 
+    3. Use the output from the Fundamental Analysis Agent to include an evaluation of the cryptocurrency's whitepaper, 
        team, roadmap, and partnerships, providing insights into the project's long-term potential.
     4. Use the output from the Technical Analysis Agent to assess key technical indicators such as the 50-day SMA and 
        200-day SMA, analyzing price trends and market momentum.

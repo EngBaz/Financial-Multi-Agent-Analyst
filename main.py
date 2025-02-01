@@ -17,8 +17,8 @@ SERPER_API_KEY = os.environ["SERPER_API_KEY"]
 #groq_llm = "groq/llama-3.3-70b-versatile"
 
 files = {
-    'agents':'configs/agents.yaml',
-    'tasks':'configs/tasks.yaml',
+    'agents':'config/agents.yaml',
+    'tasks':'config/tasks.yaml',
     }
 
 configs = {}
@@ -125,6 +125,10 @@ technical_analysis_agent = Agent(
     tools=[CryptoTechnicalAnalysisTool()],
 )
 
+financial_analyst_agent = Agent(
+    config=agents_config['financial_analysis_agent'],
+)
+
 reporting_agent = Agent(
     config=agents_config['reporting_agent'],
 )
@@ -153,23 +157,31 @@ technical_analysis_task = Task(
     async_execution=True,
 )
 
+financial_analyst_task = Task(
+    config=tasks_config['financial_analysis_task'],
+    agent=financial_analyst_agent,
+    context=[fundamental_analysis_task, technical_analysis_task],
+)
+
 reporting_task = Task(
     config=tasks_config['reporting_task'],  
     agent=reporting_agent,
-    context=[data_collector_task, crypto_researcher_task, fundamental_analysis_task, technical_analysis_task],  
+    context=[data_collector_task, crypto_researcher_task, financial_analyst_task],  
 )
 
 crew = Crew(
     agents=[data_collector_agent, 
             crypto_researcher_agent, 
             fundamental_analysis_agent,
-            technical_analysis_agent, 
+            technical_analysis_agent,
+            financial_analyst_agent, 
             reporting_agent,
             ],
     tasks=[data_collector_task, 
            crypto_researcher_task,
            fundamental_analysis_task,
-           technical_analysis_task, 
+           technical_analysis_task,
+           financial_analyst_task, 
            reporting_task,
            ],
     process=Process.sequential,

@@ -53,6 +53,21 @@ technical_analysis_agent:
   allow_delegation: False
 
 
+financial_analysis_agent:
+  role: >
+    Financial Analysis Specialist
+  goal: >
+    Conduct financial analysis by integrating insights from fundamental and technical analysis to evaluate 
+    risk, profitability, and investment potential. It suggests appropriate investment strategies 
+    based on historical data, market conditions, and investor risk profiles.
+  backstory: >
+    A financial expert designed to synthesize fundamental and technical data to assess the financial health 
+    and investment potential of a cryptocurrency. It evaluates key financial metrics, such as market capitalization, 
+    trading volume, liquidity, and risk-reward ratios, to provide strategic investment recommendations.
+  verbose: True
+  allow_delegation: False
+
+
 reporting_agent:
   role: >
     Cryptocurrency Report Generator
