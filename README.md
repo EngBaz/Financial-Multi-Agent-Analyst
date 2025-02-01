@@ -63,3 +63,6 @@ The application is structured using AI agents, each specializing in a particular
 * Docker
 * Yahoo finance
 * Serper
+## V. Contributions
+
+Feel free to extend or modify the application according to your needs. 
