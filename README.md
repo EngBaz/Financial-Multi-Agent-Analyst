@@ -4,21 +4,26 @@ DEVELOPING A CRYPTO FINANCIAL ANALYST. THIS IS NOT A USED FOR FINANCIAL ADVICE!
 
 ![Bitcoin](images/bitcoin.png)
 
-## Technologies used
+## Setup
 
-The project integrates several cutting-edge technologies to enable accurate and efficient analysis of cryptocurrencies:
+To setup this project on your local machine, follow the below steps:
+1. Clone this repository: <code>git clone github.com/EngBaz/BrAIcht-Bot</code>
 
-1- <code>Streamlit:</code> Provides an interactive web interface for entering cryptocurrency tickers and timeframes
+2. Create a virtual enviromnent
+   ```console
+    $ python -m venv .venv
+    $ .venv\Scripts\activate.bat
+    ```
+3. Install the required dependencies by running <code>pip install -r requirements.txt</code>
 
-2- <code>CrewAI:</code> Manages AI agents responsible for different types of analysis
-
-3- <code>Yahoo Finance (yfinance):</code>Retrieves historical price data for technical and financial analysis
-
-4- <code>SerperDevTool & ScrapeWebsiteTool:</code> Used for web scraping and research purposes in fundamental analysis
-
-5- <code>Python:</code> Serves as a central programming language that enables the collection, processing and visualization of data
-
-6- <code>Docker (Planned):</code> Facilitates deployment for seamless execution across environments
+4. Obtain an API key from OpenAI, Cohere AI and Groq. Store the APIs in a <code>.env</code> file as follows:
+    ```console
+    
+    $ GOOGLE_API_KEY="your api key"
+    $ GROQ_API_KEY="your api key"
+    $ COHERE_API_KEY="your api key"
+    ```
+5. run the streamlit app: <code> streamlit run main.py </code>
 
 ## Implementation
 
