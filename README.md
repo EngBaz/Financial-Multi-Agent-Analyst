@@ -1,5 +1,6 @@
 # AI Financial Analyst Bot
 
+Note: You need to know the cryptocurrency's ticker name for a better analysis.
 
 ## :gear: Configuration
 
