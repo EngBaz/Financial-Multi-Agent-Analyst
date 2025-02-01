@@ -31,7 +31,7 @@ The application is structured using AI agents, each specializing in a particular
 
 1- <code>Data Collector Agent:</code> Gathers historical price data and key financial metrics
 
-2- <code>Crypto Researcher Agent:</code> Scrapes the web for whitepapers, team details, and project credibility
+2- <code>Crypto Researcher Agent:</code> Scrapes the web for general information on a specific cryptocurrency
 
 3- <code>Fundamental Analysis Agent:</code> Assesses a cryptocurrency’s vision, team, partnerships, and long-term potential
 
