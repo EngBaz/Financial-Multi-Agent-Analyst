@@ -1,1 +1,3 @@
-# DEVELOPING A MULTI-AGENT-CRYPTO-ANALYST USING CREWAI & LANGGRAPH
+# Advanced Cryptocurrency Analysis Dashboard
+
+![Bitcoin](images/bitcoin.png)
