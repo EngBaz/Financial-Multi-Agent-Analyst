@@ -48,3 +48,4 @@ The application is structured using AI agents, each specializing in a particular
 * CrewAI
 * Docker
 * Yahoo finance
+* Serper
