@@ -2,6 +2,7 @@ import os
 import streamlit as st
 
 from crew import *
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -14,9 +15,9 @@ def main():
     st.title("Advanced Cryptocurrency Analysis Dashboard!")
     st.sidebar.header("Cryptocurrency Analysis")
 
-    crypto_tickers = ["BTC-USD", "ETH-USD", "ADA-USD", "XRP-USD", "SOL-USD", "BNB-USD", "DOGE-USD", "TRX-USD", "DOT-USD", "AVAX-USD",
+    tickers = ["BTC-USD", "ETH-USD", "ADA-USD", "XRP-USD", "SOL-USD", "BNB-USD", "DOGE-USD", "TRX-USD", "DOT-USD", "AVAX-USD",
                       "SHIB-USD", "MATIC-USD", "LUNA-USD", "LTC-USD", "LINK-USD", "UNI-USD", "ALGO-USD"]
-    selected_crypto_ticker = st.sidebar.selectbox("Select a crypto:", crypto_tickers)
+    selected_ticker = st.sidebar.selectbox("Select a crypto:", tickers)
 
     period = ["1y", "2y", "3y", "4y", "5y", "6y"]
     selected_period = st.sidebar.selectbox("Select a timeframe:", period)
@@ -26,7 +27,7 @@ def main():
     if analyze_button:
         st.info(f"Starting analysis. This may take a few minutes...")
     
-        result = FinancialAnalystCrew().crew().kickoff(inputs={"ticker": selected_crypto_ticker,"period": selected_period})
+        result = FinancialAnalystCrew().crew().kickoff(inputs={"ticker": selected_ticker,"period": selected_period})
         
         st.success("Analysis complete!")
         st.markdown(result)
