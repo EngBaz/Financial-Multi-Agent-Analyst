@@ -6,9 +6,9 @@ from crewai.project import CrewBase, agent, task, crew, before_kickoff
 from crewai.tools import BaseTool 
 
 
-class CryptoDataCollectorTool(BaseTool):
-    name: str = "get_crypto_data"
-    description: str = "Fetch basic crypto data for a given ticker and period."
+class CryptoCurrencyDataCollectorTool(BaseTool):
+    name: str = "get_cryptocurrency_data"
+    description: str = "Fetch basic cryptocurrency data for a given ticker and period."
     
     def _run(self, ticker: str, period: str) -> str:
         try:
@@ -23,6 +23,7 @@ class CryptoDataCollectorTool(BaseTool):
             symbol = info.get('symbol', 'N/A')
             market_cap = info.get('marketCap', 'N/A')
             circulating_supply = info.get('circulatingSupply', 'N/A')
+            total_supply = info.get('totalSupply', 'N/A')
 
             crypto_avg = round(history['Close'].mean(), 2) if not history.empty else 'N/A'
             crypto_max = round(history['Close'].max(), 2) if not history.empty else 'N/A'
@@ -31,8 +32,9 @@ class CryptoDataCollectorTool(BaseTool):
             response = f"""
             - Name: {name}
             - Symbol: {symbol}
-            - Market Cap: {market_cap}
-            - Circulating Supply: {circulating_supply}
+            - Market Capitalization: {market_cap}
+            - Circulating Supply: {total_supply}
+            - Total Supply: {circulating_supply}
             - Cryptocurrency Price (Last {period}):
               - Average: {crypto_avg}
               - Max: {crypto_max}
@@ -43,8 +45,8 @@ class CryptoDataCollectorTool(BaseTool):
         except Exception as e:
             return f"An error occurred while fetching crypto data: {str(e)}"
         
-class CryptoTechnicalAnalysisTool(BaseTool):
-    name: str = "get_crypto_technical_analysis"
+class CryptocurrencyTechnicalAnalysisTool(BaseTool):
+    name: str = "get_cryptocurrency_technical_analysis"
     description: str = "Perform technical analysis on a given cryptocurrency ticker and period."
     
     def _run(self, ticker: str, period: str) -> str:
@@ -80,24 +82,15 @@ class FinancialAnalystCrew():
     def data_analyst(self) -> Agent:
         return Agent(
             config=self.agents_config['senior_data_analyst'],
-            tools=[CryptoDataCollectorTool()],
+            tools=[CryptoCurrencyDataCollectorTool()],
             verbose=True,
             memory=False,
             )
 
     @agent
-    def news_researcher(self) -> Agent:
-        return Agent(
-            config=self.agents_config['news_researcher'],
-            tools=[SerperDevTool(), ScrapeWebsiteTool()],
-            verbose=True,
-            memory=False,
-            )
-        
-    @agent
     def fundamental_analyst(self) -> Agent:
         return Agent(
-            config=self.agents_config['fundamental_analyst'],
+            config=self.agents_config['expert_fundamental_analyst'],
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
             verbose=True,
             memory=False,
@@ -107,7 +100,7 @@ class FinancialAnalystCrew():
     def technical_analyst(self) -> Agent:
         return Agent(
             config=self.agents_config['technical_analyst'],
-            tools=[CryptoTechnicalAnalysisTool()],
+            tools=[CryptocurrencyTechnicalAnalysisTool()],
             verbose=True,
             memory=False,
             )
@@ -137,17 +130,9 @@ class FinancialAnalystCrew():
             )
 
     @task
-    def news_researcher_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['news_researcher_task'],
-            agent=self.news_researcher(),
-            async_execution=True,
-            )
-
-    @task
     def fundamental_analyst_task(self) -> Task:
         return Task(
-            config=self.tasks_config['fundamental_analyst_task'],
+            config=self.tasks_config['expert_fundamental_analyst_task'],
             agent=self.fundamental_analyst(),
             async_execution=True,
             )
@@ -173,7 +158,7 @@ class FinancialAnalystCrew():
         return Task(
             config=self.tasks_config['technical_report_task'],  
             agent=self.technical_report(),
-            context=[self.data_analyst_task(), self.news_researcher_task(), self.financial_analyst_task()],
+            context=[self.data_analyst_task(), self.financial_analyst_task()],
             )
         
     @crew

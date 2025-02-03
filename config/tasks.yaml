@@ -14,32 +14,21 @@ senior_data_analyst_task:
     A structured summary of the cryptocurrency's financial metrics and historical price performance.
 
 
-news_researcher_task:
+expert_fundamental_analyst_task:
   description: >
-    1. Search for recent and relevant information about the cryptocurrency specified by the user.
-    2. Use reliable sources such as news websites, blogs, or cryptocurrency forums to provide up-to-date insights.
-    3. If the user doesn't provide a cryptocurrency ticker, request clarification.
+    1. Conduct a thorough examination of the cryptocurrency's whitepaper, assessing its technology, vision, and long-term objectives.  
+    2. Analyze the project's team, advisors, and governance structure, evaluating their expertise, track record, and role in the ecosystem.  
+    3. Investigate the tokenomics, including supply mechanics, utility, distribution model, and potential for long-term sustainability.  
+    4. Assess the project's partnerships, collaborations, and strategic alliances to gauge industry adoption and credibility.  
+    5. Evaluate the roadmap, development progress, and any milestones achieved to determine execution capability.  
+    6. Identify key strengths, weaknesses, risks, and competitive positioning within the market.  
 
-    User crypto: {ticker}.
-
-    Your response should include:
-    - A concise summary of recent news related to the cryptocurrency.
-    - Key developments, trends, or events that may impact the cryptocurrency's market or reputation.
+    User crypto: {ticker}.  
   expected_output: >
-    A structured summary of relevant news and insights about the specified cryptocurrency.
+    A structured and in-depth fundamental analysis covering the whitepaper, team, advisors, tokenomics, partnerships, 
+    roadmap, and competitive landscape. The analysis should provide insights into the project's long-term viability, 
+    credibility, and potential risks.
 
-
-fundamental_analyst_task:
-  description: >
-    1. Analyze the cryptocurrency's project whitepaper to assess its long-term vision and goals.
-    2. Evaluate the team and advisors behind the cryptocurrency project, including their experience and reputation.
-    3. Investigate any partnerships or collaborations that the project has secured to evaluate its credibility and growth potential.
-    4. Provide a comprehensive summary of the project's fundamental strengths and weaknesses based on the above factors.
-  
-    User crypto: {ticker}.
-  expected_output: >
-    A structured analysis of the project's whitepaper, roadmap, team, advisors, and partnerships. 
-    This analysis should focus on the project's long-term potential, credibility, and growth opportunities.
 
 
 technical_analyst_task:
