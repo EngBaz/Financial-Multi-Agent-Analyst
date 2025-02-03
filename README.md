@@ -34,7 +34,7 @@ To setup this project on your local machine, follow the below steps:
     ```
 5. run the streamlit app: <code> streamlit run main.py </code>
 
-### Key Features
+## III. Key Features
 
 * <code>Cryptocurrency News Retrieval:</code> Uses serper API to fetch the latest news related to the cryptocurrency 
 * <code>Historical Cryptocurrency Data:</code> Utilizes yfinance library to fetch historical cryptocurrency data 
@@ -42,7 +42,7 @@ To setup this project on your local machine, follow the below steps:
 * <code>Technical Data:</code> Calculates metrics such as SM50, RSI, and MACD to enhance investment decisions 
 * <code>AI-Powered Analysis:</code> Uses OpenAI's GPT models to generate a detailed report with in-depth financial analysis and recommendations
 
-## III. Multi-Agent Architecture
+## IV. Multi-Agent Architecture
 
 The application is structured using AI agents, each specializing in a particular aspect of cryptocurrency analysis:
 
@@ -55,7 +55,7 @@ The application is structured using AI agents, each specializing in a particular
   <li><code>Reporting Agent:</code> Generates a comprehensive summary based on all analyses</li>
 </ol>
 
-## IV. Technologies used
+## V. Technologies used
 
 * Python
 * Streamlit
@@ -64,6 +64,6 @@ The application is structured using AI agents, each specializing in a particular
 * Yahoo finance
 * Serper API 
   
-## V. Contributions
+## IV. Contributions
 
 Feel free to contribute to the development and enhancement of this financial analyst  
