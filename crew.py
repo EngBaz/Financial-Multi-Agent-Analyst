@@ -24,19 +24,19 @@ class CryptoDataCollectorTool(BaseTool):
             market_cap = info.get('marketCap', 'N/A')
             circulating_supply = info.get('circulatingSupply', 'N/A')
 
-            stock_avg = round(history['Close'].mean(), 2) if not history.empty else 'N/A'
-            stock_max = round(history['Close'].max(), 2) if not history.empty else 'N/A'
-            stock_min = round(history['Close'].min(), 2) if not history.empty else 'N/A'
+            crypto_avg = round(history['Close'].mean(), 2) if not history.empty else 'N/A'
+            crypto_max = round(history['Close'].max(), 2) if not history.empty else 'N/A'
+            crypto_min = round(history['Close'].min(), 2) if not history.empty else 'N/A'
 
             response = f"""
             - Name: {name}
             - Symbol: {symbol}
             - Market Cap: {market_cap}
             - Circulating Supply: {circulating_supply}
-            - Stock Price (Last {period}):
-              - Average: {stock_avg}
-              - Max: {stock_max}
-              - Min: {stock_min}
+            - Cryptocurrency Price (Last {period}):
+              - Average: {crypto_avg}
+              - Max: {crypto_max}
+              - Min: {crypto_min}
             """
             return response
 
@@ -79,7 +79,7 @@ class FinancialAnalystCrew():
     @agent
     def data_analyst(self) -> Agent:
         return Agent(
-            config=self.agents_config['data_analyst'],
+            config=self.agents_config['senior_data_analyst'],
             tools=[CryptoDataCollectorTool()],
             verbose=True,
             memory=False,
@@ -131,7 +131,7 @@ class FinancialAnalystCrew():
     @task
     def data_analyst_task(self) -> Task:
         return Task(
-            config=self.tasks_config['data_analyst_task'],
+            config=self.tasks_config['senior_data_analyst_task'],
             agent=self.data_analyst(),
             async_execution=True,
             )
