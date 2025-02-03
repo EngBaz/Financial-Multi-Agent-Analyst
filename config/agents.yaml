@@ -1,4 +1,4 @@
-data_collector_agent:
+data_analyst:
   role: >
     Data Collector
   goal: >
@@ -12,7 +12,7 @@ data_collector_agent:
   allow_delegation: False
 
 
-crypto_researcher_agent:
+news_researcher:
   role: >
     Crypto Researcher
   goal: >
@@ -25,7 +25,7 @@ crypto_researcher_agent:
   allow_delegation: False
 
 
-fundamental_analysis_agent:
+fundamental_analyst:
   role: >
     Fundamental Analysis Specialist
   goal: >
@@ -39,7 +39,7 @@ fundamental_analysis_agent:
   allow_delegation: False
 
 
-technical_analysis_agent:
+technical_analyst:
   role: >
     Technical Analysis Specialist
   goal: >
@@ -53,7 +53,7 @@ technical_analysis_agent:
   allow_delegation: False
 
 
-financial_analysis_agent:
+financial_analyst:
   role: >
     Financial Analysis Specialist
   goal: >
@@ -68,7 +68,7 @@ financial_analysis_agent:
   allow_delegation: False
 
 
-reporting_agent:
+technical_report:
   role: >
     Cryptocurrency Report Generator
   goal: >

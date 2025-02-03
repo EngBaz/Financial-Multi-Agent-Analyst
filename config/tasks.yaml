@@ -1,4 +1,4 @@
-data_collector_task:
+data_analyst_task:
   description: >
     1. Retrieve cryptocurrency data based on the user crytocurrency, including its name, ticker, market cap, circulating supply, 
        and historical stock price metrics (average, maximum, and minimum) over the specified timeframe.
@@ -18,7 +18,7 @@ data_collector_task:
     A structured summary of the cryptocurrency's financial metrics and historical price performance.
 
 
-crypto_researcher_task:
+news_researcher_task:
   description: >
     1. Search for recent and relevant information about the cryptocurrency specified by the user.
     2. Use reliable sources such as news websites, blogs, or cryptocurrency forums to provide up-to-date insights.
@@ -33,7 +33,7 @@ crypto_researcher_task:
     A structured summary of relevant news and insights about the specified cryptocurrency.
 
 
-fundamental_analysis_task:
+fundamental_analyst_task:
   description: >
     1. Analyze the cryptocurrency's project whitepaper to assess its long-term vision and goals.
     2. Evaluate the team and advisors behind the cryptocurrency project, including their experience and reputation.
@@ -46,7 +46,7 @@ fundamental_analysis_task:
     This analysis should focus on the project's long-term potential, credibility, and growth opportunities.
 
 
-technical_analysis_task:
+technical_analyst_task:
   description: >
     1. Retrieve historical price data for the given cryptocurrency over the specified period.
     2. Calculate key technical indicators, including the 50-day SMA and 200-day SMA, to analyze market trends.
@@ -61,7 +61,7 @@ technical_analysis_task:
     for informed decision-making.
 
 
-financial_analysis_task:
+financial_analyst_task:
   description: >
     1. Integrate insights from both fundamental and technical analysis to assess the cryptocurrency's overall financial health.
     2. Evaluate key financial metrics such as market capitalization, trading volume, liquidity, volatility, and risk-reward ratios.
@@ -76,7 +76,7 @@ financial_analysis_task:
     suggested investment strategies tailored to market conditions.
 
 
-reporting_task:
+technical_report_task:
   description: >
     1. Use the output from the Data Collector Agent to include detailed data metrics about the cryptocurrency 
        in a tabular format.
